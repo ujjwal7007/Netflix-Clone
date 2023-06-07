@@ -7,7 +7,7 @@ const apiPaths = {
   fetchAllCategories: `${apiEndpoint}/genre/movie/list?api_key=${apikey}`,
   fetchMoviesList: (id) =>
     `${apiEndpoint}/discover/movie?api_key=${apikey}&with_genres=${id}`,
-  fechTrending: `${apiEndpoint}/trending/all/day?api_key=${apikey}&language=en-US`,
+  fetchTrending: `${apiEndpoint}/trending/all/day?api_key=${apikey}&language=en-US`,
   searchOnYoutube: (query) =>
     `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=cc01231d2amshf3f24cbfaa21df3p14ea8fjsn0ee418a2e994`,
 };
@@ -19,7 +19,7 @@ function init() {
 }
 
 function fetchTrendingMovies() {
-  fetchAndbulidMovieSection(apiPaths.fechTrending, "Trending Now")
+  fetchAndbulidMovieSection(apiPaths.fetchTrending, "Trending Now")
     .then((list) => {
       const randamIndex = parseInt(Math.random() * list.length);
       buildBannerSection(list[randamIndex]);
